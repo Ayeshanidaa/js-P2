@@ -143,11 +143,11 @@ function filterMovies() {
   displayMovies(filteredMovies);
 }
 
-// Add event listeners to filter as user types or changes genre
+
 if (titleInput && genreSelect && movieList) {
   titleInput.addEventListener('input', filterMovies);
   genreSelect.addEventListener('change', filterMovies);
 }
 
-// Initial display of all movies
+
 displayMovies(movies);

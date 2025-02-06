@@ -110,7 +110,7 @@ const movieList = document.getElementById('movie-list');
 
 // Display the movies on the page
 function displayMovies(filteredMovies) {
-  movieList.innerHTML = '';
+  movieList.innerHTML = '';  // jo bhi uske andar ka content tha, woh sab hata diya jaata hai.
 
   if (filteredMovies.length === 0) {
     movieList.innerHTML = '<p>No movies found.</p>';
@@ -120,15 +120,15 @@ function displayMovies(filteredMovies) {
   filteredMovies.forEach(movie => {
     const movieItem = document.createElement('div');
     movieItem.classList.add('movie');
-    movieItem.innerHTML = `
+    movieItem.innerHTML = `      
       <img src="${movie.image}" alt="${movie.title} movie poster" style="width:150px;height:auto;">
       <h3>${movie.title}</h3>
-      <p>Genre: ${movie.genre}</p>
-    `;
-    movieList.appendChild(movieItem);
+      <p>Genre: ${movie.genre}</p>`;  //innerHTML: Content of the element (without the element's tag).
+      movieList.appendChild(movieItem);  //appendChild ka matlab hai kisi HTML element ke andar ek naya child element add karna.
+      // Log each movie to the console
+      console.log(`Title: ${movie.title}, Genre: ${movie.genre}, Image: ${movie.image}`);
   });
 }
-
 // Filter movies based on title and genre inputs
 function filterMovies() {
   const searchTerm = titleInput.value.toLowerCase();
@@ -143,11 +143,11 @@ function filterMovies() {
   displayMovies(filteredMovies);
 }
 
-
+//&& AND operator hai, jo dono conditions ko true hone par hi true return karta hai.
 if (titleInput && genreSelect && movieList) {
   titleInput.addEventListener('input', filterMovies);
   genreSelect.addEventListener('change', filterMovies);
-}
+}  
 
 
 displayMovies(movies);
